@@ -1,20 +1,23 @@
 const express = require('express'),
     router = express.Router();
 
+const emailService = require('../BL/email.service')
 const { auth } = require('../middlewares/auth')
 
-router.post('/', auth, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
+        let result = await emailService.getAllRecieved()
+        res.send(result)
+    }
+    catch (err) {
+        res.status(400).send(err.msg || err.message || "wrong")
+    }
 
-        const { subject, content, to, user } = req.body
-
-        res.send({
-            _id: "aoksd9328sakd932is",
-            subject,
-            content,
-            to,
-            from: user.email
-        })
+})
+router.post('/:emailId', async (req, res) => {
+    try {
+        let result = await emailService.addNewMessageToEmail(req.params.emailId, req.body)
+        res.send(result)
     }
     catch (err) {
         res.status(400).send(err.msg || err.message || "wrong")

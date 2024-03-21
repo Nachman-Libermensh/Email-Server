@@ -4,11 +4,11 @@ const emailModel = require('../models/email.model')
 async function create(data) {
     return await emailModel.create(data)
 }
-async function read(filter) {
-    return await emailModel.find({ ...filter, isActive: true })
+async function read(filter,isPopulate) {
+    return await emailModel.find(filter).populate(isPopulate ? 'msg' :'')
 }
 async function readOne(filter) {
-    return await emailModel.findOne({ ...filter, isActive: true })
+    return await emailModel.findOne(filter)
 }
 async function update(id, data) {
     // return await emailModel.findOneAndUpdate({_id:id}, data,{new : true})

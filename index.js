@@ -1,5 +1,3 @@
-require('./DL/test_data')
-
 const 
 express = require('express'),
 app = express(); 
