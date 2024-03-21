@@ -28,6 +28,11 @@ const userSchema = new mongoose.Schema({
         isFavorite: Boolean,
         isDeleted: Boolean
     }],
+
+    isActive : {
+        type:Boolean,
+        default: true
+    }
 })
 
 const userModel = mongoose.model('user', userSchema)
