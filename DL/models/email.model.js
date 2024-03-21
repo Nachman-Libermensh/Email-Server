@@ -14,10 +14,6 @@ const emailSchema = new mongoose.Schema({
     lastDate: {
         type: Date
     },
-    isRead: {
-        type: Boolean,
-        default: false
-    },
     
 })
 

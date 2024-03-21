@@ -26,13 +26,14 @@ const userSchema = new mongoose.Schema({
         isSent: Boolean,
         isRecieved: Boolean,
         isFavorite: Boolean,
-        isDeleted: Boolean
+        isDeleted: Boolean,
+        isRead: {type:Boolean,default:false},
     }],
 
     isActive : {
-        type:Boolean,
-        default: true
-    }
+    type: Boolean,
+    default: true
+}
 })
 
 const userModel = mongoose.model('user', userSchema)
